@@ -11,6 +11,7 @@ class ApiConstants {
 }
 
 class ApiServices {
+  //singleton
   ApiServices._();
   static final ApiServices instance = ApiServices._();
   factory ApiServices() => instance;
@@ -19,6 +20,7 @@ class ApiServices {
     final response = await http.get(Uri.parse(ApiConstants.getAllProductUrl));
     if (response.statusCode == 200) {
       final resposnseData = jsonDecode(response.body) as List;
+      // log("Get all products ${response.statusCode}");
       return resposnseData
           .map((product) => ProductModel.fromJson(product))
           .toList();

@@ -8,7 +8,7 @@ import 'package:shop_cart/controllers/category/category_bloc.dart';
 import 'package:shop_cart/controllers/product/product_bloc.dart';
 import 'package:shop_cart/views/main_page/main_page.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
 }
 

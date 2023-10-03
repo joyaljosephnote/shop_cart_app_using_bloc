@@ -71,7 +71,7 @@ class CartTileWidget extends StatelessWidget {
                         fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                   height10,
-                  //remove and buy now button row
+                  //remove button row
                   ElevatedButtonWidget(
                     product: product,
                     iconData: Icons.delete,

@@ -14,9 +14,9 @@ class BottomNavigationWidget extends StatelessWidget {
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.grey,
             currentIndex: state.value,
-            onTap: (value) => context
+            onTap: (index) => context
                 .read<BottomNavigationBloc>()
-                .add(BottomNavigationValueChangeEvent(value: value)),
+                .add(BottomNavigationValueChangeEvent(value: index)),
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(

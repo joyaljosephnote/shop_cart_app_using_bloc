@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_cart/models/product_model.dart';
 import 'package:shop_cart/utils/colors.dart';
 import 'package:shop_cart/utils/constants.dart';
-import 'package:shop_cart/views/detail/product_details.dart';
+import 'package:shop_cart/views/product_details/product_details.dart';
 
 class BestSelling extends StatelessWidget {
   const BestSelling({super.key, required this.product});
