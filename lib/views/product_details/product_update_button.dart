@@ -29,6 +29,15 @@ class ProductUpdationButton extends StatelessWidget {
               size: 33,
               color: Colors.purple,
             )),
+        IconButton(
+            onPressed: () {
+              ApiServices().upDateProduct(product: productModel, put: false);
+            },
+            icon: const Icon(
+              Icons.delete,
+              size: 33,
+              color: Colors.purple,
+            )),
       ],
     );
   }

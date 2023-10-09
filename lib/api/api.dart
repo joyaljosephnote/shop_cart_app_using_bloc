@@ -9,6 +9,7 @@ class ApiConstants {
   static const categoryUrl =
       "https://fakestoreapi.com/products/category/jewelery";
   static const updateProduct = 'https://fakestoreapi.com/products/';
+  static const delete = 'https://fakestoreapi.com/products/';
 }
 
 class ApiServices {
@@ -81,6 +82,16 @@ class ApiServices {
       } else {
         log(response.statusCode.toString());
       }
+    }
+  }
+
+  Future<void> deleteProduct({required ProductModel product}) async {
+    final response =
+        await http.delete(Uri.parse('${ApiConstants.delete}${product.id}'));
+    if (response.statusCode == 200) {
+      log('Product deleted');
+    } else {
+      log(response.statusCode.toString());
     }
   }
 }
