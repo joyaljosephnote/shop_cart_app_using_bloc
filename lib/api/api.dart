@@ -8,6 +8,7 @@ class ApiConstants {
   static const addProductUrl = "https://fakestoreapi.com/products/";
   static const categoryUrl =
       "https://fakestoreapi.com/products/category/jewelery";
+  static const updateProduct = 'https://fakestoreapi.com/products/';
 }
 
 class ApiServices {
@@ -20,7 +21,7 @@ class ApiServices {
     final response = await http.get(Uri.parse(ApiConstants.getAllProductUrl));
     if (response.statusCode == 200) {
       final resposnseData = jsonDecode(response.body) as List;
-      // log("Get all products ${response.statusCode}");
+      log("Get all products ${response.statusCode}");
       return resposnseData
           .map((product) => ProductModel.fromJson(product))
           .toList();
@@ -46,6 +47,40 @@ class ApiServices {
     });
     if (response.statusCode == 200) {
       log("New Product added Successfully ${response.statusCode}");
+    }
+  }
+
+  Future<void> upDateProduct(
+      {required ProductModel product, required bool put}) async {
+    if (put == true) {
+      final response = await http
+          .put(Uri.parse("${ApiConstants.updateProduct}${product.id}"), body: {
+        'title': product.title,
+        "price": product.price,
+        "description": product.description,
+        "image": product.image,
+        "category": product.category,
+      });
+      if (response.statusCode == 200) {
+        log('Product updated succesfully');
+      } else {
+        log(response.statusCode.toString());
+      }
+    } else if (put == false) {
+      final response = await http.patch(
+          Uri.parse("${ApiConstants.updateProduct}${product.id}"),
+          body: {
+            'title': product.title,
+            "price": product.price,
+            "description": product.description,
+            "image": product.image,
+            "category": product.category,
+          });
+      if (response.statusCode == 200) {
+        log('Product partialy updated');
+      } else {
+        log(response.statusCode.toString());
+      }
     }
   }
 }

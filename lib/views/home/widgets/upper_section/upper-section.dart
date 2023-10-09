@@ -2,12 +2,17 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_cart/api/api.dart';
+import 'package:shop_cart/controllers/product/product_bloc.dart';
 import 'package:shop_cart/utils/colors.dart';
 import 'package:shop_cart/utils/constants.dart';
 
 class UpperSection extends StatelessWidget {
-  const UpperSection({super.key});
+  const UpperSection({
+    super.key,
+    // required ProductModel productModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +99,69 @@ class UpperSection extends StatelessWidget {
               )
             ],
           ),
+          height10,
+          BlocBuilder<ProductBloc, ProductState>(builder: (context, state) {
+            return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      await ApiServices().upDateProduct(
+                          put: false, product: state.categoryList.first);
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          color: secondaryWhite,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Center(
+                        child: Text(
+                          'Patch Product',
+                        ),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      await ApiServices().upDateProduct(
+                          put: true, product: state.categoryList.first);
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          color: secondaryWhite,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Center(
+                          child: Text(
+                        'Update Product',
+                      )),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () async {
+                      await ApiServices().addProduct(
+                          title: 'shirt',
+                          category: "men's clothing",
+                          description: 'description',
+                          image: 'https://image',
+                          price: '999');
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          color: secondaryWhite,
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Center(
+                          child: Text(
+                        'Delete Product',
+                      )),
+                    ),
+                  ),
+                ]);
+          }),
           height10,
           const Text(
             'Items Back in Stock',

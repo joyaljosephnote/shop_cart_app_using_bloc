@@ -24,7 +24,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const UpperSection(),
+            BlocBuilder<ProductBloc, ProductState>(
+              builder: (context, state) {
+                return const UpperSection();
+              },
+            ),
             height10,
             Column(
               children: [

@@ -4,6 +4,7 @@ import 'package:shop_cart/controllers/cart/cart_bloc.dart';
 import 'package:shop_cart/models/product_model.dart';
 import 'package:shop_cart/utils/colors.dart';
 import 'package:shop_cart/utils/constants.dart';
+import 'package:shop_cart/views/product_details/product_update_button.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key, required this.product});
@@ -67,7 +68,13 @@ class ProductDetails extends StatelessWidget {
                   style: const TextStyle(fontSize: 14, color: Colors.grey),
                 ),
                 height20,
-                addToCart()
+                addToCart(),
+                height20,
+                Row(
+                  children: [
+                    ProductUpdationButton(productModel: product),
+                  ],
+                )
               ],
             ),
           ),
