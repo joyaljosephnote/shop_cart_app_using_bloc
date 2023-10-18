@@ -31,7 +31,7 @@ class ProductUpdationButton extends StatelessWidget {
             )),
         IconButton(
             onPressed: () {
-              ApiServices().upDateProduct(product: productModel, put: false);
+              ApiServices().deleteProduct(product: productModel);
             },
             icon: const Icon(
               Icons.delete,
